@@ -1,15 +1,21 @@
 FROM node:18-alpine
 
-RUN apk add --no-cache git bash
+# ติดตั้ง git, bash และ pnpm
+RUN apk add --no-cache git bash && npm install -g pnpm
 
 WORKDIR /app
 
+# คัดลอกไฟล์ทั้งหมดเข้าไป
 COPY . .
 
-RUN npm install
+# ติดตั้ง dependencies ด้วย pnpm
+RUN pnpm install
 
-RUN npm run build
+# สร้างโปรเจกต์
+RUN pnpm build
 
+# เปิดพอร์ต 8080
 EXPOSE 8080
 
-CMD ["npm", "start"]
+# รัน Ultraviolet
+CMD ["pnpm", "start"]
