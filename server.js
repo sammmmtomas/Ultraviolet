@@ -7,7 +7,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('*', (req, res) => {
@@ -15,7 +14,6 @@ app.get('*', (req, res) => {
 });
 
 const port = process.env.PORT || 8080;
-
 createServer(app).listen(port, '0.0.0.0', () => {
   console.log(`✅ Ultraviolet proxy server running at http://localhost:${port}`);
 });
