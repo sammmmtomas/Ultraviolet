@@ -1,13 +1,12 @@
 {
   "name": "ultraviolet-proxy",
-  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "start": "node server.js",
     "build": "node build.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^4.19.2",
     "events": "^3.3.0",
     "set-cookie-parser": "^2.7.1",
     "idb": "^8.0.2",
