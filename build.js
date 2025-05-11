@@ -8,7 +8,7 @@ await rimraf("dist");
 await mkdir("dist", { recursive: true });
 
 // copy static files
-await copyFile("src/sw.js", "dist/sw.js");
+await copyFile("src/uv.sw.js", "dist/sw.js");
 await copyFile("src/uv.config.js", "dist/uv.config.js");
 
 await build({
