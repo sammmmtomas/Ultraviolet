@@ -44,5 +44,4 @@ jobs:
           --region us-central1 \
           --project proxy-cloudrun-459416 \
           --platform managed \
-          --allow-unauthenticated
-          --timeout=300s
+          --allow-unauthenticated  --timeout=300s
