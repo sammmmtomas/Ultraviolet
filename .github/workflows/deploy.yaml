@@ -26,10 +26,14 @@ jobs:
       run: |
         gcloud auth configure-docker us-central1-docker.pkg.dev
 
-    - name: Build and Push Docker Image
+    - name: Build Docker image
       run: |
         IMAGE=us-central1-docker.pkg.dev/proxy-cloudrun-459416/my-docker-repo/my-cloudrun-service
         docker build -t $IMAGE .
+
+    - name: Push Docker image
+      run: |
+        IMAGE=us-central1-docker.pkg.dev/proxy-cloudrun-459416/my-docker-repo/my-cloudrun-service
         docker push $IMAGE
 
     - name: Deploy to Cloud Run
