@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-RUN apk add --no-cache bash && npm install -g pnpm
+RUN apk add --no-cache git bash && npm install -g pnpm
 
 WORKDIR /app
 
@@ -11,4 +11,4 @@ RUN pnpm build
 
 EXPOSE 8080
 
-CMD ["node", "index.js"]
+CMD ["pnpm", "start"]
