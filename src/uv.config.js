@@ -1,6 +1,5 @@
-/*global Ultraviolet*/
 self.__uv$config = {
-  prefix: "/service/",
+  prefix: "/service/", // <== ต้อง match กับ app.use("/service/", uvHandler)
   encodeUrl: Ultraviolet.codec.xor.encode,
   decodeUrl: Ultraviolet.codec.xor.decode,
   handler: "/uv.handler.js",
@@ -8,7 +7,4 @@ self.__uv$config = {
   bundle: "/uv.bundle.js",
   config: "/uv.config.js",
   sw: "/uv.sw.js",
-  bare: {
-    prefix: "/bare/"
-  }
 };
