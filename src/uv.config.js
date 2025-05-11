@@ -1,5 +1,5 @@
 self.__uv$config = {
-  prefix: "/service/", // <== ต้อง match กับ app.use("/service/", uvHandler)
+  prefix: "/service/",
   encodeUrl: Ultraviolet.codec.xor.encode,
   decodeUrl: Ultraviolet.codec.xor.decode,
   handler: "/uv.handler.js",
