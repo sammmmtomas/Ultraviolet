@@ -1,19 +1,21 @@
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { createServer } from 'http';
+import express from "express";
+import { readFile } from "node:fs/promises";
+import { createServer } from "node:http";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'dist')));
+const port = process.env.PORT || 8080;
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+app.use(express.static(join(__dirname, "dist")));
+
+app.get("*", async (req, res) => {
+  const indexHtml = await readFile(join(__dirname, "dist", "index.html"), "utf-8");
+  res.set("Content-Type", "text/html").send(indexHtml);
 });
 
-const port = process.env.PORT || 8080;
-createServer(app).listen(port, '0.0.0.0', () => {
-  console.log(`✅ Ultraviolet proxy server running at http://localhost:${port}`);
+createServer(app).listen(port, () => {
+  console.log(`✅ Server running on http://localhost:${port}`);
 });
