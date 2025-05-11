@@ -30,7 +30,7 @@ jobs:
       run: |
         IMAGE=us-central1-docker.pkg.dev/proxy-cloudrun-459416/my-docker-repo/my-cloudrun-service
         docker build -t $IMAGE .
-  
+
     - name: Push Docker image
       run: |
         IMAGE=us-central1-docker.pkg.dev/proxy-cloudrun-459416/my-docker-repo/my-cloudrun-service
@@ -39,10 +39,4 @@ jobs:
     - name: Deploy to Cloud Run
       run: |
         IMAGE=us-central1-docker.pkg.dev/proxy-cloudrun-459416/my-docker-repo/my-cloudrun-service
-        gcloud run deploy my-cloudrun-service \
-        --image $IMAGE \
-        --region us-central1 \
-        --project proxy-cloudrun-459416 \
-        --platform managed \
-        --allow-unauthenticated \
-        --timeout=300s
+        gcloud run deploy my-cloudrun-service           --image $IMAGE           --region us-central1           --project proxy-cloudrun-459416           --platform managed           --allow-unauthenticated           --timeout=300s
