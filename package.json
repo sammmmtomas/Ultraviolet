@@ -7,7 +7,13 @@
     "build": "node build.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "events": "^3.3.0",
+    "set-cookie-parser": "^2.7.1",
+    "idb": "^8.0.2",
+    "parse5": "^7.2.1",
+    "meriyah": "^6.0.5",
+    "astring": "^1.9.0",
+    "@mercuryworkshop/bare-mux": "^2.1.7"
   },
   "devDependencies": {
     "esbuild": "^0.25.0",
