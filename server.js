@@ -1,20 +1,18 @@
 import express from "express";
-import path from "path";
+import { join } from "path";
 import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const app = express();
-const PORT = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
-// Serve static assets from the "dist" directory
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(join(__dirname, "dist")));
+app.use(express.static(join(__dirname, "public"))); // เสิร์ฟ index.html จาก public
 
-// Default fallback to index.html (if needed)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+app.get("/", (req, res) => {
+  res.sendFile(join(__dirname, "public", "index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`Ultraviolet is running at http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Ultraviolet running on port ${port}`);
 });
