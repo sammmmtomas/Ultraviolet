@@ -1,12 +1,20 @@
-import express from 'express';
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
-const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
+// Serve static assets from the "dist" directory
+app.use(express.static(path.join(__dirname, "dist")));
+
+// Default fallback to index.html (if needed)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Ultraviolet is running at http://localhost:${PORT}`);
 });
