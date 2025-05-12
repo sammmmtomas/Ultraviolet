@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 // server.js
-import { uvHandler } from "./dist/uv.handler.js";
+import { uvHandler } from './src/uv.handler.js'
 
 const app = express();
 const PORT = process.env.PORT || 8080;
