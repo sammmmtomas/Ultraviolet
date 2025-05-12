@@ -1,7 +1,8 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import { uvHandler } from "./src/uv.handler.js";
+// server.js
+import { uvHandler } from "./src/uv.handler.js"; // 👈 ไม่ใช่ dist แล้ว
 
 const app = express();
 const PORT = process.env.PORT || 8080;
