@@ -3,17 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "build": "node build.js"
   },
   "dependencies": {
-    "events": "^3.3.0",
-    "set-cookie-parser": "^2.7.1",
-    "idb": "^8.0.2",
-    "parse5": "^7.2.1",
-    "meriyah": "^6.0.5",
-    "astring": "^1.9.0",
-    "@mercuryworkshop/bare-mux": "^2.1.7",
     "express": "^4.18.2"
   },
   "devDependencies": {
