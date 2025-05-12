@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN mkdir -p dist && cp src/* dist/
+RUN mkdir -p dist && cp -r src/* dist/
 
 EXPOSE 8080
 
