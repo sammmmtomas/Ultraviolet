@@ -1,3 +1,2 @@
-export const uvHandler = (req, res) => {
-  res.end("Proxy handler placeholder");
-};
+(()=>{})();
+self.Ultraviolet = Ultraviolet;
