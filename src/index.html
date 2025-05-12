@@ -2,6 +2,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/uv.sw.js", {
+      scope: __uv$config.prefix,
+    });
+  }
+</script>
     <title>Ultraviolet Proxy</title>
     <script src="/uv.bundle.js"></script>
     <script src="/uv.client.js" defer></script>
