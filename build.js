@@ -23,7 +23,7 @@ await build({
   sourcemap: isDev,
   outdir: "dist",
   target: "esnext",
-  platform: "browser",
+  platform: "browser", // อย่าเปลี่ยนเป็น node
   logLevel: "info",
   define: {
     "process.env.NODE_ENV": JSON.stringify(isDev ? "development" : "production"),
@@ -31,6 +31,13 @@ await build({
   footer: {
     js: "self.Ultraviolet = Ultraviolet;",
   },
+  external: [
+    "events",               // 💥 แก้ตรงนี้
+    "idb",
+    "parse5",
+    "set-cookie-parser",
+    "astring",
+    "meriyah",
+    "@mercuryworkshop/bare-mux",
+  ]
 });
-
-console.log("✅ Build complete.");
