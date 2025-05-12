@@ -1,2 +1,2 @@
-(()=>{var o=class{constructor(){console.log("\u2705 Ultraviolet initialized")}static codec={xor:{encode:t=>btoa(t),decode:t=>atob(t)}}};self.Ultraviolet=o;})();
+(()=>{var e=class{constructor(){console.log("\u2705 UV Ready")}encodeUrl(o){return"/service/"+encodeURIComponent(o)}};self.Ultraviolet=e;})();
 self.Ultraviolet = Ultraviolet;
