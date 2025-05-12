@@ -1,15 +1,12 @@
 FROM node:18-alpine
 
-RUN apk add --no-cache git bash
-
 WORKDIR /app
 
 COPY . .
 
-RUN mkdir -p dist && cp -r src/* dist/
-
-RUN ls -la dist
+RUN npm install
+RUN npm run build
 
 EXPOSE 8080
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
