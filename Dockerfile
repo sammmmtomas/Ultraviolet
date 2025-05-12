@@ -1,13 +1,12 @@
 FROM node:18-alpine
 
-RUN apk add --no-cache git bash && npm install -g pnpm
+RUN apk add --no-cache git bash
 
 WORKDIR /app
 
 COPY . .
 
-RUN pnpm install
-RUN pnpm build
+RUN mkdir -p dist && cp src/* dist/
 
 EXPOSE 8080
 
