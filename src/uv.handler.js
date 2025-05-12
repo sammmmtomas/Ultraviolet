@@ -1,26 +1,23 @@
-// src/uv.handler.js
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 export const uvHandler = createProxyMiddleware({
   changeOrigin: true,
-  pathRewrite: (path) => {
+  pathRewrite: (path, req) => {
     try {
-      const realUrl = decodeURIComponent(path.replace(/^\/service\//, ""));
-      const parsed = new URL(realUrl); // validate URL
-      return parsed.pathname + parsed.search;
-    } catch (e) {
-      console.error("Invalid URL in pathRewrite:", e.message);
-      return "/"; // fallback
+      const raw = decodeURIComponent(path.replace(/^\/service\//, ""));
+      const u = new URL(raw);
+      return u.pathname + u.search;
+    } catch (err) {
+      return "/";
     }
   },
   router: (req) => {
     try {
-      const url = decodeURIComponent(req.path.replace(/^\/service\//, ""));
-      const parsed = new URL(url); // validate URL
-      return parsed.origin;
-    } catch (e) {
-      console.error("Invalid URL in router:", e.message);
-      return "https://example.com"; // fallback safe host
+      const raw = decodeURIComponent(req.path.replace(/^\/service\//, ""));
+      const u = new URL(raw);
+      return u.origin;
+    } catch (err) {
+      return "https://example.com"; // fallback
     }
   },
 });
