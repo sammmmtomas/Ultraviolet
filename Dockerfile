@@ -1,11 +1,19 @@
 FROM node:18-alpine
 
+# Install bash + pnpm
+RUN apk add --no-cache bash git && npm install -g pnpm
+
 WORKDIR /app
 
+# Copy all files
 COPY . .
 
-RUN npm install
-RUN mkdir -p dist && cp -r src/* dist/
+# Install deps and build
+RUN pnpm install
+RUN pnpm build
 
+# ✅ บอก Cloud Run ว่าฟังบนพอร์ต 8080
 EXPOSE 8080
+
+# ✅ ต้องรัน server.js
 CMD ["node", "server.js"]
