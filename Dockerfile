@@ -11,6 +11,7 @@ COPY . .
 # Install deps and build
 RUN pnpm install
 RUN pnpm build
+RUN pnpm add http-proxy-middleware
 
 # ✅ บอก Cloud Run ว่าฟังบนพอร์ต 8080
 EXPOSE 8080
