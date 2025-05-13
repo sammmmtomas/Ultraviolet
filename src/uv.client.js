@@ -1,4 +1,5 @@
 // uv.client.js
+const uv = new Ultraviolet(__uv$config); // 👈 ให้ Ultraviolet รู้จัก config
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("uv-form");
   const input = document.getElementById("uv-address");
@@ -13,6 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ? url
       : "https://" + url;
 
-    location.href = __uv$config.prefix + __uv$config.encodeUrl(normalizedUrl);
+    location.href = uv.prefix + uv.encodeUrl(normalizedUrl);
   });
 });
