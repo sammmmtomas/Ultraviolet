@@ -15,5 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // เข้าผ่าน path ที่ proxy ใช้ (uv.config.js กำหนดไว้ prefix = "/service/")
     location.href = __uv$config.prefix + __uv$config.encodeUrl(normalizedUrl);
+    navigator.serviceWorker.register("uv.sw.js", { type: "module" });
   });
 });
