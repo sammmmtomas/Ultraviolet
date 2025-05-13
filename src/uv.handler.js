@@ -7,7 +7,7 @@ export const uvHandler = createProxyMiddleware({
       const raw = decodeURIComponent(path.replace(/^\/service\//, ""));
       const u = new URL(raw);
       return u.pathname + u.search;
-    } catch {
+    } catch (err) {
       return "/";
     }
   },
@@ -16,8 +16,8 @@ export const uvHandler = createProxyMiddleware({
       const raw = decodeURIComponent(req.path.replace(/^\/service\//, ""));
       const u = new URL(raw);
       return u.origin;
-    } catch {
-      return "https://example.com";
+    } catch (err) {
+      return "https://example.com"; // fallback
     }
   },
 });
