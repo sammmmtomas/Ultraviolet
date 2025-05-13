@@ -29,10 +29,3 @@ window.__uv$referrer = atob("${btoa(v)}");`}],attrs:[{name:"__uv-script",value:"
  * MIT Licensed
  */
 self.Ultraviolet = Ultraviolet;
-
-class Ultraviolet {
-  encodeUrl(url) {
-    return "/service/" + encodeURIComponent(url);
-  }
-}
-self.Ultraviolet = Ultraviolet;
