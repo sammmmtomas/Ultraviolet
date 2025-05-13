@@ -2,22 +2,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-<script src="/uv/uv.config.js"></script>
-<script src="/uv/uv.bundle.js"></script> 
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/uv/uv.sw.js', {
-        scope: __uv$config.prefix,
-      });
-    });
-  }
-</script>
+    <meta charset="UTF-8" />
     <title>Ultraviolet Proxy</title>
-    <script src="/uv.config.js" defer></script>
-    <script src="/uv.bundle.js"></script> 
+
+    <!-- โหลด config ก่อนเพราะต้องใช้ใน sw + client -->
+    <script src="/uv.config.js"></script>
+
+    <!-- bundle (UV core) -->
+    <script src="/uv.bundle.js" defer></script>
+
+    <!-- client logic (form, encode URL) -->
     <script src="/uv.client.js" defer></script>
-    <script src="/uv.sw.js" defer></script>
+
+    <!-- service worker ไม่ต้องใส่ <script> แบบนี้ -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register("/uv.sw.js", {
+            scope: __uv$config.prefix,
+          });
+        });
+      }
+    </script>
   </head>
   <body>
     <form id="uv-form">
