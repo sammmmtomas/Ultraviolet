@@ -7,6 +7,17 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+// เพิ่ม middleware หรือ route handlers ที่จำเป็น
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
+
 app.use(express.static(path.join(__dirname, "dist")));
 app.use("/service/", uvHandler);
 
