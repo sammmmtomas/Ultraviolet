@@ -3,10 +3,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { uvHandler } from "./src/uv.handler.js"; // 👈 ตรงนี้ถูกแล้ว
 
-const app = express();
-const PORT = process.env.PORT || 8080;
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8080;
