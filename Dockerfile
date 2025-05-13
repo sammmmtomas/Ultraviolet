@@ -1,14 +1,11 @@
 FROM node:18-alpine
 
+RUN apk add --no-cache git bash && npm install -g pnpm
+
 WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
-
 COPY . .
 
-# Ensure dist files exist before container starts
-RUN mkdir -p dist && cp -r dist/* ./dist/
+RUN pnpm install && pnpm build
 
 EXPOSE 8080
 CMD ["node", "server.js"]
