@@ -13,3 +13,11 @@ self.addEventListener("fetch", (event) => {
     );
   }
 });
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/uv.sw.js", {
+    scope: "/service/"
+  }).then(() => {
+    console.log("✅ Service worker registered");
+  }).catch(console.error);
+}
