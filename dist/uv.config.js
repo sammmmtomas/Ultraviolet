@@ -1,6 +1,7 @@
 self.__uv$config = {
   prefix: "/service/",
-  encodeUrl: (url) => {
-    return encodeURIComponent(url);
-  },
+  bare: "/bare/",
+  bundle: "/uv.bundle.js",
+  config: "/uv.config.js",
+  handler: "/uv.handler.js",
 };
