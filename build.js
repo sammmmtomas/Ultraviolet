@@ -9,6 +9,7 @@ await mkdir("dist", { recursive: true });
 await copyFile("src/index.html", "dist/index.html");
 await copyFile("src/uv.config.js", "dist/uv.config.js");
 await copyFile("src/uv.sw.js", "dist/uv.sw.js");
+await copyFile("src/uv.handler.js", "dist/uv.handler.js");
 
 await build({
   entryPoints: {
