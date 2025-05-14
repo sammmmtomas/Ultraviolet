@@ -1,4 +1,11 @@
 // uv.client.js
+if (!window.__uv && window.Ultraviolet) {
+  window.__uv = new Ultraviolet({
+    ...__uv$config,
+    window,
+  });
+}
+
 const uv = new Ultraviolet(__uv$config); // 👈 ให้ Ultraviolet รู้จัก config
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("uv-form");

@@ -1,4 +1,3 @@
-<!-- dist/index.html -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,13 +7,13 @@
     <!-- โหลด config ก่อนเพราะต้องใช้ใน sw + client -->
     <script src="/uv.config.js"></script>
 
-    <!-- bundle (UV core) -->
+    <!-- UV core -->
     <script src="/uv.bundle.js" defer></script>
 
-    <!-- client logic (form, encode URL) -->
+    <!-- Client logic -->
     <script src="/uv.client.js" defer></script>
 
-    <!-- service worker ไม่ต้องใส่ <script> แบบนี้ -->
+    <!-- SW registration -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
