@@ -10,11 +10,11 @@ await copyFile("src/index.html", "dist/index.html");
 await copyFile("src/uv.config.js", "dist/uv.config.js");
 await copyFile("src/uv.sw.js", "dist/uv.sw.js");
 await copyFile("src/uv.handler.js", "dist/uv.handler.js");
+await copyFile("src/uv.client.js", "dist/uv.client.js");
 
 await build({
   entryPoints: {
     "uv.bundle": "./src/uv.bundle.js",
-    "uv.client": "./src/uv.client.js"
   },
   bundle: true,
   minify: !isDev,

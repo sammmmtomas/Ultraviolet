@@ -9,8 +9,8 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-       navigator.serviceWorker.register("/service/uv.sw.js", {
-                  scope: "/service/",
+          navigator.serviceWorker.register("/uv.sw.js", {
+            scope: __uv$config.prefix,
           });
         });
       }
