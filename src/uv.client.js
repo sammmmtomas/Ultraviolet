@@ -1,4 +1,3 @@
-// ✅ uv.client.js
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("uv-form");
   const input = document.getElementById("uv-address");
