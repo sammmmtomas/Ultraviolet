@@ -2,17 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("uv-form");
   const input = document.getElementById("uv-address");
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  if (!window.__uv && window.Ultraviolet) {
+    window.__uv = new Ultraviolet({
+      ...__uv$config,
+      window,
+    });
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
     const url = input.value.trim();
     if (!url) return;
 
-    const normalizedUrl = url.startsWith("http://") || url.startsWith("https://")
-      ? url
-      : "https://" + url;
-
-    if (!window.__uv) return alert("Ultraviolet core not loaded.");
-    const encoded = window.__uv.url.encode(normalizedUrl);
-    location.href = __uv$config.prefix + encoded;
+    const encoded = window.__uv.url.encode(
+      url.startsWith("http") ? url : "https://" + url
+    );
+    location.href = encoded;
   });
 });
