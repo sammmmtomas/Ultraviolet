@@ -2,21 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("uv-form");
   const input = document.getElementById("uv-address");
 
-  if (!window.__uv && window.Ultraviolet) {
-    window.__uv = new Ultraviolet({
-      ...__uv$config,
-      window,
-    });
-  }
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
     const url = input.value.trim();
     if (!url) return;
 
-    const encoded = window.__uv.url.encode(
-      url.startsWith("http") ? url : "https://" + url
-    );
-    location.href = encoded;
+    const normalizedUrl =
+      url.startsWith("http://") || url.startsWith("https://")
+        ? url
+        : "https://" + url;
+
+    // ✅ ตรวจว่ามี __uv และ encodeUrl
+    if (window.__uv && typeof window.__uv.config?.encodeUrl === "function") {
+      const encoded = window.__uv.config.encodeUrl(normalizedUrl);
+      location.href = window.__uv.config.prefix + encoded;
+    } else {
+      alert("❌ Ultraviolet ยังโหลดไม่เสร็จ");
+    }
   });
 });
