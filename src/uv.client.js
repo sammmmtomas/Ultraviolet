@@ -5,16 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const url = input.value.trim();
-
-    if (!url || typeof __uv$config?.encodeUrl !== "function") {
-      console.warn("❌ __uv$config.encodeUrl is not available.");
-      return;
-    }
+    if (!url) return;
 
     const normalizedUrl = url.startsWith("http://") || url.startsWith("https://")
       ? url
       : "https://" + url;
 
-    location.href = __uv$config.prefix + __uv$config.encodeUrl(normalizedUrl);
+    if (!window.__uv) return alert("Ultraviolet core not loaded.");
+    const encoded = window.__uv.url.encode(normalizedUrl);
+    location.href = __uv$config.prefix + encoded;
   });
 });
