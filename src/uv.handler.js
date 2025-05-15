@@ -1,24 +1,23 @@
-// src/uv.handler.js
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 export const uvHandler = createProxyMiddleware({
   changeOrigin: true,
-  pathRewrite: (path) => {
+  pathRewrite: (path, req) => {
     try {
-      const decoded = decodeURIComponent(path.replace(/^\/service\//, ""));
-      const url = new URL(decoded);
-      return url.pathname + url.search;
-    } catch {
+      const url = decodeURIComponent(path.replace(/^\/service\//, ""));
+      const u = new URL(url);
+      return u.pathname + u.search;
+    } catch (err) {
       return "/";
     }
   },
   router: (req) => {
     try {
-      const decoded = decodeURIComponent(req.path.replace(/^\/service\//, ""));
-      const url = new URL(decoded);
-      return url.origin;
-    } catch {
-      return "https://example.com";
+      const raw = decodeURIComponent(req.path.replace(/^\/service\//, ""));
+      const u = new URL(raw);
+      return u.origin;
+    } catch (err) {
+      return "https://example.com"; // fallback
     }
   },
 });
