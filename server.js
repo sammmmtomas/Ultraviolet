@@ -1,8 +1,6 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import { uvHandler } from "./src/uv.handler.js";
-app.use("/service/", uvHandler);
 
 const app = express();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
