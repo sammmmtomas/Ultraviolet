@@ -1,19 +1,19 @@
-export default class Ultraviolet {
+class Ultraviolet {
   constructor(config) {
     this.config = config;
     console.log("✅ Ultraviolet ready with config:", config);
   }
 
-  url = {
-    encode(url) {
+  config = {
+    encodeUrl(url) {
       return this.config.prefix + encodeURIComponent(url);
     },
-    decode(encoded) {
+    decodeUrl(encoded) {
       return decodeURIComponent(encoded.replace(this.config.prefix, ""));
     }
   };
 }
-
 if (typeof self === 'object') {
   self.Ultraviolet = Ultraviolet;
+  self.__uv = new Ultraviolet(self.__uv$config);
 }
