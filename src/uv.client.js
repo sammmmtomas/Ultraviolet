@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let uvReady = false;
 
-  // 🔁 ตรวจทุก 100ms จนกว่าจะพร้อม
   const waitForUV = setInterval(() => {
     if (window.__uv && typeof window.__uv.config?.encodeUrl === "function") {
       uvReady = true;

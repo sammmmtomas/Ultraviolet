@@ -13,4 +13,7 @@ export default class Ultraviolet {
     }
   };
 }
+
+if (typeof self === 'object') {
   self.Ultraviolet = Ultraviolet;
+}
