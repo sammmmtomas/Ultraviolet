@@ -40,5 +40,8 @@
 		"meriyah": "^6.0.5",
 		"parse5": "^7.2.1",
 		"set-cookie-parser": "^2.7.1"
+	},
+	"dependencies": {
+  		"express": "^5.1.0"
 	}
 }
